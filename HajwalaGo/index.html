@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Store Redirect</title>
+</head>
+<body>
+    <h1>Redirecting you to the appropriate App Store...</h1>
+    <script>
+        function detectDeviceAndRedirect() {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+            // Check if the user is on iOS
+            if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                window.location.href = "https://apps.apple.com/us/app/hajwala-go/id6476442524";
+            }
+            // Check if the user is on Android
+            else if (/android/i.test(userAgent)) {
+                window.location.href = "https://play.google.com/store/apps/details?id=com.sakher.hajwala";
+            }
+            // If the user is on neither, show a message
+            else {
+                document.body.innerHTML = "<h1>Unsupported device. Please open this link on your Android or iOS device.</h1>";
+            }
+        }
+
+        // Call the function when the page loads
+        window.onload = detectDeviceAndRedirect;
+    </script>
+</body>
+</html>
